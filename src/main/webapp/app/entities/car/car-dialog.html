@@ -1,0 +1,97 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myCarLabel" data-translate="springCarsApp.car.home.createOrEditLabel">Create or edit a Car</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.car.id">
+            <label for="id" data-translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.car.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="springCarsApp.car.model" for="field_model">Model</label>
+            <input type="text" class="form-control" name="model" id="field_model"
+                    ng-model="vm.car.model"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="springCarsApp.car.country" for="field_country">Country</label>
+            <input type="text" class="form-control" name="country" id="field_country"
+                    ng-model="vm.car.country"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="springCarsApp.car.description" for="field_description">Description</label>
+            <input type="text" class="form-control" name="description" id="field_description"
+                    ng-model="vm.car.description"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="springCarsApp.car.segment" for="field_segment">Segment</label>
+            <select class="form-control" name="segment" ng-model="vm.car.segment" id="field_segment">
+                <option value="A" data-translate="springCarsApp.Segment.A">A</option>
+                <option value="B" data-translate="springCarsApp.Segment.B">B</option>
+                <option value="C" data-translate="springCarsApp.Segment.C">C</option>
+                <option value="D" data-translate="springCarsApp.Segment.D">D</option>
+                <option value="E" data-translate="springCarsApp.Segment.E">E</option>
+                <option value="F" data-translate="springCarsApp.Segment.F">F</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="springCarsApp.car.sales" for="field_sales">Sales</label>
+            <input type="number" class="form-control" name="sales" id="field_sales"
+                    ng-model="vm.car.sales"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="springCarsApp.car.minPrice" for="field_minPrice">Min Price</label>
+            <input type="number" class="form-control" name="minPrice" id="field_minPrice"
+                    ng-model="vm.car.minPrice"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="springCarsApp.car.maxPrice" for="field_maxPrice">Max Price</label>
+            <input type="number" class="form-control" name="maxPrice" id="field_maxPrice"
+                    ng-model="vm.car.maxPrice"
+                     />
+        </div>
+
+        <div class="form-group">
+            <label data-translate="springCarsApp.car.manufacturer" for="field_manufacturer">Manufacturer</label>
+            <select class="form-control" id="field_manufacturer" name="manufacturer" ng-model="vm.car.manufacturer" ng-options="manufacturer as manufacturer.name for manufacturer in vm.manufacturers track by manufacturer.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label data-translate="springCarsApp.car.link" for="field_link">Link</label>
+            <select class="form-control" id="field_link" name="link" ng-model="vm.car.link" ng-options="link as link.url for link in vm.links track by link.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label data-translate="springCarsApp.car.classification" for="field_classification">Classification</label>
+            <select class="form-control" id="field_classification" multiple name="classification" ng-model="vm.car.classifications" ng-options="classification as classification.name for classification in vm.classifications track by classification.id"></select>
+        </div>
+        <div class="form-group">
+            <label data-translate="springCarsApp.car.traction" for="field_traction">Traction</label>
+            <select class="form-control" id="field_traction" multiple name="traction" ng-model="vm.car.tractions" ng-options="traction as traction.name for traction in vm.tractions track by traction.id"></select>
+        </div>
+        <div class="form-group">
+            <label data-translate="springCarsApp.car.gas" for="field_gas">Gas</label>
+            <select class="form-control" id="field_gas" multiple name="gas" ng-model="vm.car.gases" ng-options="gas as gas.name for gas in vm.gases track by gas.id"></select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

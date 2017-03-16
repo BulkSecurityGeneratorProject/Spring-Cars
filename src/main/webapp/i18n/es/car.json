@@ -1,0 +1,34 @@
+{
+    "springCarsApp": {
+        "car" : {
+            "home": {
+                "title": "Cars",
+                "createLabel": "Crear nuevo Car",
+                "createOrEditLabel": "Crear o editar Car",
+                "search": "Search for Car"
+            },
+            "created": "Un nuevo Car ha sido creado con el identificador {{ param }}",
+            "updated": "Un Car ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Car ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Car {{ id }}?"
+            },
+            "detail": {
+                "title": "Car"
+            },
+            "model": "Model",
+            "country": "Country",
+            "description": "Description",
+            "segment": "Segment",
+            "sales": "Sales",
+            "minPrice": "Min Price",
+            "maxPrice": "Max Price",
+            "manufacturer": "Manufacturer",
+            "link": "Link",
+            "classification": "Classification",
+            "traction": "Traction",
+            "gas": "Gas",
+            "photo": "Photo"
+        }
+    }
+}

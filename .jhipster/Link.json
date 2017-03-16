@@ -1,0 +1,27 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "car",
+            "otherEntityName": "car",
+            "otherEntityRelationshipName": "link"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "url",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "type",
+            "fieldType": "LinkType",
+            "fieldValues": "SPECS,BUY,REVIEWS,OFFPAGE"
+        }
+    ],
+    "changelogDate": "20170314184815",
+    "entityTableName": "link",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no"
+}

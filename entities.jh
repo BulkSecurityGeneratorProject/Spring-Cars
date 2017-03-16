@@ -1,0 +1,52 @@
+entity Car {
+    model String,
+    country String,
+    description String,
+    segment Segment,
+    sales Integer,
+    minPrice Double,
+    maxPrice Double
+}
+entity Link {
+	url String,
+    type LinkType
+}
+enum LinkType{
+	SPECS, BUY, REVIEWS, OFFPAGE
+}
+enum Segment {
+	A, B, C, D, E, F
+}
+entity Gas {
+	name String
+}
+entity Traction {
+	name String,
+    ref String,
+    description String
+} 
+entity Photo {
+	image ImageBlob,
+    description String
+}
+entity Manufacturer{
+	name String,
+    description String,
+	yearFund ZonedDateTime
+}
+entity Classification{
+	name String,
+	description String
+}
+relationship ManyToOne {
+	Car{manufacturer(name)} to Manufacturer{car},
+    Classification{parent(name)} to Classification{children},
+    Photo{car(model)} to Car{photo},
+    Car{link(url)} to Link{car}
+}
+relationship ManyToMany{
+	Car{classification(name)} to Classification{car},
+    Car{traction(name)} to Traction{car},
+    Car{gas(name)} to Gas{car}
+}
+

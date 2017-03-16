@@ -1,0 +1,23 @@
+{
+    "springCarsApp": {
+        "gas" : {
+            "home": {
+                "title": "Gases",
+                "createLabel": "Crear nuevo Gas",
+                "createOrEditLabel": "Crear o editar Gas",
+                "search": "Search for Gas"
+            },
+            "created": "Un nuevo Gas ha sido creado con el identificador {{ param }}",
+            "updated": "Un Gas ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Gas ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Gas {{ id }}?"
+            },
+            "detail": {
+                "title": "Gas"
+            },
+            "name": "Name",
+            "car": "Car"
+        }
+    }
+}

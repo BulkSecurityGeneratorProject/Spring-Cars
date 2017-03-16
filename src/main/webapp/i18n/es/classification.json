@@ -1,0 +1,26 @@
+{
+    "springCarsApp": {
+        "classification" : {
+            "home": {
+                "title": "Classifications",
+                "createLabel": "Crear nuevo Classification",
+                "createOrEditLabel": "Crear o editar Classification",
+                "search": "Search for Classification"
+            },
+            "created": "Un nuevo Classification ha sido creado con el identificador {{ param }}",
+            "updated": "Un Classification ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Classification ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Classification {{ id }}?"
+            },
+            "detail": {
+                "title": "Classification"
+            },
+            "name": "Name",
+            "description": "Description",
+            "parent": "Parent",
+            "children": "Children",
+            "car": "Car"
+        }
+    }
+}

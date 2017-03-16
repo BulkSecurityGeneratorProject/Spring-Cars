@@ -1,0 +1,73 @@
+
+<div>
+    <h2><span data-translate="springCarsApp.car.detail.title">Car</span> {{vm.car.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="springCarsApp.car.model">Model</span></dt>
+        <dd>
+            <span>{{vm.car.model}}</span>
+        </dd>
+        <dt><span data-translate="springCarsApp.car.country">Country</span></dt>
+        <dd>
+            <span>{{vm.car.country}}</span>
+        </dd>
+        <dt><span data-translate="springCarsApp.car.description">Description</span></dt>
+        <dd>
+            <span>{{vm.car.description}}</span>
+        </dd>
+        <dt><span data-translate="springCarsApp.car.segment">Segment</span></dt>
+        <dd>
+            <span data-translate="{{'springCarsApp.Segment.' + vm.car.segment}}">{{vm.car.segment}}</span>
+        </dd>
+        <dt><span data-translate="springCarsApp.car.sales">Sales</span></dt>
+        <dd>
+            <span>{{vm.car.sales}}</span>
+        </dd>
+        <dt><span data-translate="springCarsApp.car.minPrice">Min Price</span></dt>
+        <dd>
+            <span>{{vm.car.minPrice}}</span>
+        </dd>
+        <dt><span data-translate="springCarsApp.car.maxPrice">Max Price</span></dt>
+        <dd>
+            <span>{{vm.car.maxPrice}}</span>
+        </dd>
+        <dt><span data-translate="springCarsApp.car.manufacturer">Manufacturer</span></dt>
+        <dd>
+            <a ui-sref="manufacturer-detail({id:vm.car.manufacturer.id})">{{vm.car.manufacturer.name}}</a>
+        </dd>
+        <dt><span data-translate="springCarsApp.car.link">Link</span></dt>
+        <dd>
+            <a ui-sref="link-detail({id:vm.car.link.id})">{{vm.car.link.url}}</a>
+        </dd>
+        <dt><span data-translate="springCarsApp.car.classification">Classification</span></dt>
+        <dd>
+            <span ng-repeat="classification in vm.car.classifications">
+                <a ui-sref="classification-detail({id: classification.id})">{{classification.name}}</a>{{$last ? '' : ', '}}
+            </span>
+        </dd>
+        <dt><span data-translate="springCarsApp.car.traction">Traction</span></dt>
+        <dd>
+            <span ng-repeat="traction in vm.car.tractions">
+                <a ui-sref="traction-detail({id: traction.id})">{{traction.name}}</a>{{$last ? '' : ', '}}
+            </span>
+        </dd>
+        <dt><span data-translate="springCarsApp.car.gas">Gas</span></dt>
+        <dd>
+            <span ng-repeat="gas in vm.car.gases">
+                <a ui-sref="gas-detail({id: gas.id})">{{gas.name}}</a>{{$last ? '' : ', '}}
+            </span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="car-detail.edit({id:vm.car.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

@@ -1,0 +1,30 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "car",
+            "otherEntityName": "car",
+            "otherEntityRelationshipName": "manufacturer"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "yearFund",
+            "fieldType": "ZonedDateTime"
+        }
+    ],
+    "changelogDate": "20170314184819",
+    "entityTableName": "manufacturer",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no"
+}

@@ -1,0 +1,39 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "parent",
+            "otherEntityName": "classification",
+            "otherEntityField": "name"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "children",
+            "otherEntityName": "classification",
+            "otherEntityRelationshipName": "parent"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "relationshipName": "car",
+            "otherEntityName": "car",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "classification"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20170314184820",
+    "entityTableName": "classification",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no"
+}

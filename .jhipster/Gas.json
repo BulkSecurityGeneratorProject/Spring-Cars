@@ -1,0 +1,23 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-many",
+            "relationshipName": "car",
+            "otherEntityName": "car",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "gas"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20170314184816",
+    "entityTableName": "gas",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no"
+}

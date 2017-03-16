@@ -1,0 +1,94 @@
+<div>
+    <h2 data-translate="springCarsApp.car.home.title">Cars</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="car.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span  data-translate="springCarsApp.car.home.createLabel">
+                        Create new Car
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr>
+                    <th><span data-translate="global.field.id">ID</span></th>
+                    <th><span data-translate="springCarsApp.car.model">Model</span></th>
+                    <th><span data-translate="springCarsApp.car.country">Country</span></th>
+                    <th><span data-translate="springCarsApp.car.description">Description</span></th>
+                    <th><span data-translate="springCarsApp.car.segment">Segment</span></th>
+                    <th><span data-translate="springCarsApp.car.sales">Sales</span></th>
+                    <th><span data-translate="springCarsApp.car.minPrice">Min Price</span></th>
+                    <th><span data-translate="springCarsApp.car.maxPrice">Max Price</span></th>
+                    <th><span data-translate="springCarsApp.car.manufacturer">Manufacturer</span></th>
+                    <th><span data-translate="springCarsApp.car.link">Link</span></th>
+                    <th><span data-translate="springCarsApp.car.classification">Classification</span></th>
+                    <th><span data-translate="springCarsApp.car.traction">Traction</span></th>
+                    <th><span data-translate="springCarsApp.car.gas">Gas</span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="car in vm.cars track by car.id">
+                    <td><a ui-sref="car-detail({id:car.id})">{{car.id}}</a></td>
+                    <td>{{car.model}}</td>
+                    <td>{{car.country}}</td>
+                    <td>{{car.description}}</td>
+                    <td data-translate="{{'springCarsApp.Segment.' + car.segment}}">{{car.segment}}</td>
+                    <td>{{car.sales}}</td>
+                    <td>{{car.minPrice}}</td>
+                    <td>{{car.maxPrice}}</td>
+                    <td>
+                        <a ui-sref="manufacturer-detail({id:car.manufacturer.id})">{{car.manufacturer.name}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="link-detail({id:car.link.id})">{{car.link.url}}</a>
+                    </td>
+                    <td>
+                        <span ng-repeat="classification in car.classifications">
+                            <a class="form-control-static" ui-sref="classification-detail({id: classification.id})">{{classification.name}}</a>{{$last ? '' : ', '}}
+                        </span>
+                    </td>
+                    <td>
+                        <span ng-repeat="traction in car.tractions">
+                            <a class="form-control-static" ui-sref="traction-detail({id: traction.id})">{{traction.name}}</a>{{$last ? '' : ', '}}
+                        </span>
+                    </td>
+                    <td>
+                        <span ng-repeat="gas in car.gases">
+                            <a class="form-control-static" ui-sref="gas-detail({id: gas.id})">{{gas.name}}</a>{{$last ? '' : ', '}}
+                        </span>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="car-detail({id:car.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="car.edit({id:car.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="car.delete({id:car.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

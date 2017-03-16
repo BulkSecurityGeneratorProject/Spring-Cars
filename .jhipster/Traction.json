@@ -1,0 +1,31 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-many",
+            "relationshipName": "car",
+            "otherEntityName": "car",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "traction"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "ref",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20170314184817",
+    "entityTableName": "traction",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no"
+}

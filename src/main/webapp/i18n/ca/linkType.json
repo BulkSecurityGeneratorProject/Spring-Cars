@@ -1,0 +1,11 @@
+{
+    "springCarsApp": {
+        "LinkType" : {
+            "null": "",
+            "SPECS": "SPECS",
+            "BUY": "BUY",
+            "REVIEWS": "REVIEWS",
+            "OFFPAGE": "OFFPAGE"
+        }
+    }
+}

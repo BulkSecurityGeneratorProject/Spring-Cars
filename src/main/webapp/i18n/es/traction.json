@@ -1,0 +1,25 @@
+{
+    "springCarsApp": {
+        "traction" : {
+            "home": {
+                "title": "Tractions",
+                "createLabel": "Crear nuevo Traction",
+                "createOrEditLabel": "Crear o editar Traction",
+                "search": "Search for Traction"
+            },
+            "created": "Un nuevo Traction ha sido creado con el identificador {{ param }}",
+            "updated": "Un Traction ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Traction ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Traction {{ id }}?"
+            },
+            "detail": {
+                "title": "Traction"
+            },
+            "name": "Name",
+            "ref": "Ref",
+            "description": "Description",
+            "car": "Car"
+        }
+    }
+}

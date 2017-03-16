@@ -1,0 +1,83 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "manufacturer",
+            "otherEntityName": "manufacturer",
+            "otherEntityField": "name"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "link",
+            "otherEntityName": "link",
+            "otherEntityField": "url"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "car",
+            "relationshipName": "classification",
+            "otherEntityName": "classification",
+            "otherEntityField": "name",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "car",
+            "relationshipName": "traction",
+            "otherEntityName": "traction",
+            "otherEntityField": "name",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "car",
+            "relationshipName": "gas",
+            "otherEntityName": "gas",
+            "otherEntityField": "name",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "photo",
+            "otherEntityName": "photo",
+            "otherEntityRelationshipName": "car"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "model",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "country",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "segment",
+            "fieldType": "Segment",
+            "fieldValues": "A,B,C,D,E,F"
+        },
+        {
+            "fieldName": "sales",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "minPrice",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "maxPrice",
+            "fieldType": "Double"
+        }
+    ],
+    "changelogDate": "20170314184814",
+    "entityTableName": "car",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no"
+}
