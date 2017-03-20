@@ -105,6 +105,7 @@
                         entity: function () {
                             return {
                                 name: null,
+                                country: null,
                                 description: null,
                                 yearFund: null,
                                 id: null

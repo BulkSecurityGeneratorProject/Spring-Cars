@@ -20,12 +20,12 @@
                 <tr>
                     <th><span data-translate="global.field.id">ID</span></th>
                     <th><span data-translate="springCarsApp.car.model">Model</span></th>
-                    <th><span data-translate="springCarsApp.car.country">Country</span></th>
                     <th><span data-translate="springCarsApp.car.description">Description</span></th>
                     <th><span data-translate="springCarsApp.car.segment">Segment</span></th>
                     <th><span data-translate="springCarsApp.car.sales">Sales</span></th>
                     <th><span data-translate="springCarsApp.car.minPrice">Min Price</span></th>
                     <th><span data-translate="springCarsApp.car.maxPrice">Max Price</span></th>
+                    <th><span data-translate="springCarsApp.car.year">Year</span></th>
                     <th><span data-translate="springCarsApp.car.manufacturer">Manufacturer</span></th>
                     <th><span data-translate="springCarsApp.car.link">Link</span></th>
                     <th><span data-translate="springCarsApp.car.classification">Classification</span></th>
@@ -38,12 +38,12 @@
                 <tr ng-repeat="car in vm.cars track by car.id">
                     <td><a ui-sref="car-detail({id:car.id})">{{car.id}}</a></td>
                     <td>{{car.model}}</td>
-                    <td>{{car.country}}</td>
                     <td>{{car.description}}</td>
                     <td data-translate="{{'springCarsApp.Segment.' + car.segment}}">{{car.segment}}</td>
                     <td>{{car.sales}}</td>
                     <td>{{car.minPrice}}</td>
                     <td>{{car.maxPrice}}</td>
+                    <td>{{car.year | date:'medium'}}</td>
                     <td>
                         <a ui-sref="manufacturer-detail({id:car.manufacturer.id})">{{car.manufacturer.name}}</a>
                     </td>

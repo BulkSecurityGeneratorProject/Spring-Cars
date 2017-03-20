@@ -17,6 +17,7 @@
                 "title": "Manufacturer"
             },
             "name": "Name",
+            "country": "Country",
             "description": "Description",
             "yearFund": "Year Fund",
             "car": "Car"

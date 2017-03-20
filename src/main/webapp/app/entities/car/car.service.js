@@ -4,9 +4,9 @@
         .module('springCarsApp')
         .factory('Car', Car);
 
-    Car.$inject = ['$resource'];
+    Car.$inject = ['$resource', 'DateUtils'];
 
-    function Car ($resource) {
+    function Car ($resource, DateUtils) {
         var resourceUrl =  'api/cars/:id';
 
         return $resource(resourceUrl, {}, {
@@ -16,6 +16,7 @@
                 transformResponse: function (data) {
                     if (data) {
                         data = angular.fromJson(data);
+                        data.year = DateUtils.convertDateTimeFromServer(data.year);
                     }
                     return data;
                 }

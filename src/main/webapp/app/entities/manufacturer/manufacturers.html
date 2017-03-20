@@ -20,6 +20,7 @@
                 <tr>
                     <th><span data-translate="global.field.id">ID</span></th>
                     <th><span data-translate="springCarsApp.manufacturer.name">Name</span></th>
+                    <th><span data-translate="springCarsApp.manufacturer.country">Country</span></th>
                     <th><span data-translate="springCarsApp.manufacturer.description">Description</span></th>
                     <th><span data-translate="springCarsApp.manufacturer.yearFund">Year Fund</span></th>
                     <th></th>
@@ -29,6 +30,7 @@
                 <tr ng-repeat="manufacturer in vm.manufacturers track by manufacturer.id">
                     <td><a ui-sref="manufacturer-detail({id:manufacturer.id})">{{manufacturer.id}}</a></td>
                     <td>{{manufacturer.name}}</td>
+                    <td>{{manufacturer.country}}</td>
                     <td>{{manufacturer.description}}</td>
                     <td>{{manufacturer.yearFund | date:'medium'}}</td>
                     <td class="text-right">

@@ -14,12 +14,16 @@
             "fieldType": "String"
         },
         {
+            "fieldName": "lang",
+            "fieldType": "String"
+        },
+        {
             "fieldName": "type",
             "fieldType": "LinkType",
             "fieldValues": "SPECS,BUY,REVIEWS,OFFPAGE"
         }
     ],
-    "changelogDate": "20170314184815",
+    "changelogDate": "20170320191341",
     "entityTableName": "link",
     "dto": "no",
     "pagination": "no",

@@ -19,7 +19,7 @@
             "fieldType": "String"
         }
     ],
-    "changelogDate": "20170314184818",
+    "changelogDate": "20170320191344",
     "entityTableName": "photo",
     "dto": "no",
     "pagination": "no",

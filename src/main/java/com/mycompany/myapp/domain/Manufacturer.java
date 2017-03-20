@@ -25,6 +25,9 @@ public class Manufacturer implements Serializable {
     @Column(name = "name")
     private String name;
 
+    @Column(name = "country")
+    private String country;
+
     @Column(name = "description")
     private String description;
 
@@ -54,6 +57,19 @@ public class Manufacturer implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public Manufacturer country(String country) {
+        this.country = country;
+        return this;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
     }
 
     public String getDescription() {
@@ -132,6 +148,7 @@ public class Manufacturer implements Serializable {
         return "Manufacturer{" +
             "id=" + id +
             ", name='" + name + "'" +
+            ", country='" + country + "'" +
             ", description='" + description + "'" +
             ", yearFund='" + yearFund + "'" +
             '}';

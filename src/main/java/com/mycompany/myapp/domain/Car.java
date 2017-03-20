@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.ZonedDateTime;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.Objects;
@@ -26,9 +27,6 @@ public class Car implements Serializable {
     @Column(name = "model")
     private String model;
 
-    @Column(name = "country")
-    private String country;
-
     @Column(name = "description")
     private String description;
 
@@ -44,6 +42,9 @@ public class Car implements Serializable {
 
     @Column(name = "max_price")
     private Double maxPrice;
+
+    @Column(name = "year")
+    private ZonedDateTime year;
 
     @ManyToOne
     private Manufacturer manufacturer;
@@ -92,19 +93,6 @@ public class Car implements Serializable {
 
     public void setModel(String model) {
         this.model = model;
-    }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public Car country(String country) {
-        this.country = country;
-        return this;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
     }
 
     public String getDescription() {
@@ -170,6 +158,19 @@ public class Car implements Serializable {
 
     public void setMaxPrice(Double maxPrice) {
         this.maxPrice = maxPrice;
+    }
+
+    public ZonedDateTime getYear() {
+        return year;
+    }
+
+    public Car year(ZonedDateTime year) {
+        this.year = year;
+        return this;
+    }
+
+    public void setYear(ZonedDateTime year) {
+        this.year = year;
     }
 
     public Manufacturer getManufacturer() {
@@ -323,12 +324,12 @@ public class Car implements Serializable {
         return "Car{" +
             "id=" + id +
             ", model='" + model + "'" +
-            ", country='" + country + "'" +
             ", description='" + description + "'" +
             ", segment='" + segment + "'" +
             ", sales='" + sales + "'" +
             ", minPrice='" + minPrice + "'" +
             ", maxPrice='" + maxPrice + "'" +
+            ", year='" + year + "'" +
             '}';
     }
 }

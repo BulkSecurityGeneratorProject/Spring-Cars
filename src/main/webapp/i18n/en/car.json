@@ -17,12 +17,12 @@
                 "title": "Car"
             },
             "model": "Model",
-            "country": "Country",
             "description": "Description",
             "segment": "Segment",
             "sales": "Sales",
             "minPrice": "Min Price",
             "maxPrice": "Max Price",
+            "year": "Year",
             "manufacturer": "Manufacturer",
             "link": "Link",
             "classification": "Classification",

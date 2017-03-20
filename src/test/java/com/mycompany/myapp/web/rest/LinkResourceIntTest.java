@@ -42,6 +42,9 @@ public class LinkResourceIntTest {
     private static final String DEFAULT_URL = "AAAAA";
     private static final String UPDATED_URL = "BBBBB";
 
+    private static final String DEFAULT_LANG = "AAAAA";
+    private static final String UPDATED_LANG = "BBBBB";
+
     private static final LinkType DEFAULT_TYPE = LinkType.SPECS;
     private static final LinkType UPDATED_TYPE = LinkType.BUY;
 
@@ -80,6 +83,7 @@ public class LinkResourceIntTest {
     public static Link createEntity(EntityManager em) {
         Link link = new Link()
                 .url(DEFAULT_URL)
+                .lang(DEFAULT_LANG)
                 .type(DEFAULT_TYPE);
         return link;
     }
@@ -106,6 +110,7 @@ public class LinkResourceIntTest {
         assertThat(links).hasSize(databaseSizeBeforeCreate + 1);
         Link testLink = links.get(links.size() - 1);
         assertThat(testLink.getUrl()).isEqualTo(DEFAULT_URL);
+        assertThat(testLink.getLang()).isEqualTo(DEFAULT_LANG);
         assertThat(testLink.getType()).isEqualTo(DEFAULT_TYPE);
     }
 
@@ -121,6 +126,7 @@ public class LinkResourceIntTest {
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
                 .andExpect(jsonPath("$.[*].id").value(hasItem(link.getId().intValue())))
                 .andExpect(jsonPath("$.[*].url").value(hasItem(DEFAULT_URL.toString())))
+                .andExpect(jsonPath("$.[*].lang").value(hasItem(DEFAULT_LANG.toString())))
                 .andExpect(jsonPath("$.[*].type").value(hasItem(DEFAULT_TYPE.toString())));
     }
 
@@ -136,6 +142,7 @@ public class LinkResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(link.getId().intValue()))
             .andExpect(jsonPath("$.url").value(DEFAULT_URL.toString()))
+            .andExpect(jsonPath("$.lang").value(DEFAULT_LANG.toString()))
             .andExpect(jsonPath("$.type").value(DEFAULT_TYPE.toString()));
     }
 
@@ -158,6 +165,7 @@ public class LinkResourceIntTest {
         Link updatedLink = linkRepository.findOne(link.getId());
         updatedLink
                 .url(UPDATED_URL)
+                .lang(UPDATED_LANG)
                 .type(UPDATED_TYPE);
 
         restLinkMockMvc.perform(put("/api/links")
@@ -170,6 +178,7 @@ public class LinkResourceIntTest {
         assertThat(links).hasSize(databaseSizeBeforeUpdate);
         Link testLink = links.get(links.size() - 1);
         assertThat(testLink.getUrl()).isEqualTo(UPDATED_URL);
+        assertThat(testLink.getLang()).isEqualTo(UPDATED_LANG);
         assertThat(testLink.getType()).isEqualTo(UPDATED_TYPE);
     }
 

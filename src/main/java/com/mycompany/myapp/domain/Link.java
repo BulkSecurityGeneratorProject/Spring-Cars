@@ -26,6 +26,9 @@ public class Link implements Serializable {
     @Column(name = "url")
     private String url;
 
+    @Column(name = "lang")
+    private String lang;
+
     @Enumerated(EnumType.STRING)
     @Column(name = "type")
     private LinkType type;
@@ -53,6 +56,19 @@ public class Link implements Serializable {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public String getLang() {
+        return lang;
+    }
+
+    public Link lang(String lang) {
+        this.lang = lang;
+        return this;
+    }
+
+    public void setLang(String lang) {
+        this.lang = lang;
     }
 
     public LinkType getType() {
@@ -118,6 +134,7 @@ public class Link implements Serializable {
         return "Link{" +
             "id=" + id +
             ", url='" + url + "'" +
+            ", lang='" + lang + "'" +
             ", type='" + type + "'" +
             '}';
     }

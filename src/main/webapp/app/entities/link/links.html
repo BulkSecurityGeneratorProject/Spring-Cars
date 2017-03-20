@@ -20,6 +20,7 @@
                 <tr>
                     <th><span data-translate="global.field.id">ID</span></th>
                     <th><span data-translate="springCarsApp.link.url">Url</span></th>
+                    <th><span data-translate="springCarsApp.link.lang">Lang</span></th>
                     <th><span data-translate="springCarsApp.link.type">Type</span></th>
                     <th></th>
                 </tr>
@@ -28,6 +29,7 @@
                 <tr ng-repeat="link in vm.links track by link.id">
                     <td><a ui-sref="link-detail({id:link.id})">{{link.id}}</a></td>
                     <td>{{link.url}}</td>
+                    <td>{{link.lang}}</td>
                     <td data-translate="{{'springCarsApp.LinkType.' + link.type}}">{{link.type}}</td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">

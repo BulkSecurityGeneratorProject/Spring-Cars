@@ -107,12 +107,12 @@
                         entity: function () {
                             return {
                                 model: null,
-                                country: null,
                                 description: null,
                                 segment: null,
                                 sales: null,
                                 minPrice: null,
                                 maxPrice: null,
+                                year: null,
                                 id: null
                             };
                         }

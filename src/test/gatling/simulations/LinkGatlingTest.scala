@@ -67,7 +67,7 @@ class LinkGatlingTest extends Simulation {
             .exec(http("Create new link")
             .post("/api/links")
             .headers(headers_http_authenticated)
-            .body(StringBody("""{"id":null, "url":"SAMPLE_TEXT", "type":null}""")).asJSON
+            .body(StringBody("""{"id":null, "url":"SAMPLE_TEXT", "lang":"SAMPLE_TEXT", "type":null}""")).asJSON
             .check(status.is(201))
             .check(headerRegex("Location", "(.*)").saveAs("new_link_url"))).exitHereIfFailed
             .pause(10)

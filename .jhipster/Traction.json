@@ -23,7 +23,7 @@
             "fieldType": "String"
         }
     ],
-    "changelogDate": "20170314184817",
+    "changelogDate": "20170320191343",
     "entityTableName": "traction",
     "dto": "no",
     "pagination": "no",

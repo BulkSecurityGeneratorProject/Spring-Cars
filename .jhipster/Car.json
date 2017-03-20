@@ -50,10 +50,6 @@
             "fieldType": "String"
         },
         {
-            "fieldName": "country",
-            "fieldType": "String"
-        },
-        {
             "fieldName": "description",
             "fieldType": "String"
         },
@@ -73,9 +69,13 @@
         {
             "fieldName": "maxPrice",
             "fieldType": "Double"
+        },
+        {
+            "fieldName": "year",
+            "fieldType": "ZonedDateTime"
         }
     ],
-    "changelogDate": "20170314184814",
+    "changelogDate": "20170320191340",
     "entityTableName": "car",
     "dto": "no",
     "pagination": "no",

@@ -12,6 +12,8 @@
 
         vm.car = entity;
         vm.clear = clear;
+        vm.datePickerOpenStatus = {};
+        vm.openCalendar = openCalendar;
         vm.save = save;
         vm.manufacturers = Manufacturer.query();
         vm.links = Link.query();
@@ -47,6 +49,10 @@
             vm.isSaving = false;
         }
 
+        vm.datePickerOpenStatus.year = false;
 
+        function openCalendar (date) {
+            vm.datePickerOpenStatus[date] = true;
+        }
     }
 })();

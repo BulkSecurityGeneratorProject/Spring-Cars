@@ -23,6 +23,10 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import java.time.Instant;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.ZoneId;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -42,9 +46,6 @@ public class CarResourceIntTest {
     private static final String DEFAULT_MODEL = "AAAAA";
     private static final String UPDATED_MODEL = "BBBBB";
 
-    private static final String DEFAULT_COUNTRY = "AAAAA";
-    private static final String UPDATED_COUNTRY = "BBBBB";
-
     private static final String DEFAULT_DESCRIPTION = "AAAAA";
     private static final String UPDATED_DESCRIPTION = "BBBBB";
 
@@ -59,6 +60,10 @@ public class CarResourceIntTest {
 
     private static final Double DEFAULT_MAX_PRICE = 1D;
     private static final Double UPDATED_MAX_PRICE = 2D;
+
+    private static final ZonedDateTime DEFAULT_YEAR = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneId.systemDefault());
+    private static final ZonedDateTime UPDATED_YEAR = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
+    private static final String DEFAULT_YEAR_STR = DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(DEFAULT_YEAR);
 
     @Inject
     private CarRepository carRepository;
@@ -95,12 +100,12 @@ public class CarResourceIntTest {
     public static Car createEntity(EntityManager em) {
         Car car = new Car()
                 .model(DEFAULT_MODEL)
-                .country(DEFAULT_COUNTRY)
                 .description(DEFAULT_DESCRIPTION)
                 .segment(DEFAULT_SEGMENT)
                 .sales(DEFAULT_SALES)
                 .minPrice(DEFAULT_MIN_PRICE)
-                .maxPrice(DEFAULT_MAX_PRICE);
+                .maxPrice(DEFAULT_MAX_PRICE)
+                .year(DEFAULT_YEAR);
         return car;
     }
 
@@ -126,12 +131,12 @@ public class CarResourceIntTest {
         assertThat(cars).hasSize(databaseSizeBeforeCreate + 1);
         Car testCar = cars.get(cars.size() - 1);
         assertThat(testCar.getModel()).isEqualTo(DEFAULT_MODEL);
-        assertThat(testCar.getCountry()).isEqualTo(DEFAULT_COUNTRY);
         assertThat(testCar.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
         assertThat(testCar.getSegment()).isEqualTo(DEFAULT_SEGMENT);
         assertThat(testCar.getSales()).isEqualTo(DEFAULT_SALES);
         assertThat(testCar.getMinPrice()).isEqualTo(DEFAULT_MIN_PRICE);
         assertThat(testCar.getMaxPrice()).isEqualTo(DEFAULT_MAX_PRICE);
+        assertThat(testCar.getYear()).isEqualTo(DEFAULT_YEAR);
     }
 
     @Test
@@ -146,12 +151,12 @@ public class CarResourceIntTest {
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
                 .andExpect(jsonPath("$.[*].id").value(hasItem(car.getId().intValue())))
                 .andExpect(jsonPath("$.[*].model").value(hasItem(DEFAULT_MODEL.toString())))
-                .andExpect(jsonPath("$.[*].country").value(hasItem(DEFAULT_COUNTRY.toString())))
                 .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION.toString())))
                 .andExpect(jsonPath("$.[*].segment").value(hasItem(DEFAULT_SEGMENT.toString())))
                 .andExpect(jsonPath("$.[*].sales").value(hasItem(DEFAULT_SALES)))
                 .andExpect(jsonPath("$.[*].minPrice").value(hasItem(DEFAULT_MIN_PRICE.doubleValue())))
-                .andExpect(jsonPath("$.[*].maxPrice").value(hasItem(DEFAULT_MAX_PRICE.doubleValue())));
+                .andExpect(jsonPath("$.[*].maxPrice").value(hasItem(DEFAULT_MAX_PRICE.doubleValue())))
+                .andExpect(jsonPath("$.[*].year").value(hasItem(DEFAULT_YEAR_STR)));
     }
 
     @Test
@@ -166,12 +171,12 @@ public class CarResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(car.getId().intValue()))
             .andExpect(jsonPath("$.model").value(DEFAULT_MODEL.toString()))
-            .andExpect(jsonPath("$.country").value(DEFAULT_COUNTRY.toString()))
             .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION.toString()))
             .andExpect(jsonPath("$.segment").value(DEFAULT_SEGMENT.toString()))
             .andExpect(jsonPath("$.sales").value(DEFAULT_SALES))
             .andExpect(jsonPath("$.minPrice").value(DEFAULT_MIN_PRICE.doubleValue()))
-            .andExpect(jsonPath("$.maxPrice").value(DEFAULT_MAX_PRICE.doubleValue()));
+            .andExpect(jsonPath("$.maxPrice").value(DEFAULT_MAX_PRICE.doubleValue()))
+            .andExpect(jsonPath("$.year").value(DEFAULT_YEAR_STR));
     }
 
     @Test
@@ -193,12 +198,12 @@ public class CarResourceIntTest {
         Car updatedCar = carRepository.findOne(car.getId());
         updatedCar
                 .model(UPDATED_MODEL)
-                .country(UPDATED_COUNTRY)
                 .description(UPDATED_DESCRIPTION)
                 .segment(UPDATED_SEGMENT)
                 .sales(UPDATED_SALES)
                 .minPrice(UPDATED_MIN_PRICE)
-                .maxPrice(UPDATED_MAX_PRICE);
+                .maxPrice(UPDATED_MAX_PRICE)
+                .year(UPDATED_YEAR);
 
         restCarMockMvc.perform(put("/api/cars")
                 .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -210,12 +215,12 @@ public class CarResourceIntTest {
         assertThat(cars).hasSize(databaseSizeBeforeUpdate);
         Car testCar = cars.get(cars.size() - 1);
         assertThat(testCar.getModel()).isEqualTo(UPDATED_MODEL);
-        assertThat(testCar.getCountry()).isEqualTo(UPDATED_COUNTRY);
         assertThat(testCar.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
         assertThat(testCar.getSegment()).isEqualTo(UPDATED_SEGMENT);
         assertThat(testCar.getSales()).isEqualTo(UPDATED_SALES);
         assertThat(testCar.getMinPrice()).isEqualTo(UPDATED_MIN_PRICE);
         assertThat(testCar.getMaxPrice()).isEqualTo(UPDATED_MAX_PRICE);
+        assertThat(testCar.getYear()).isEqualTo(UPDATED_YEAR);
     }
 
     @Test

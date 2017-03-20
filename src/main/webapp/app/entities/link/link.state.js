@@ -107,6 +107,7 @@
                         entity: function () {
                             return {
                                 url: null,
+                                lang: null,
                                 type: null,
                                 id: null
                             };

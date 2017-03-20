@@ -8,10 +8,6 @@
         <dd>
             <span>{{vm.car.model}}</span>
         </dd>
-        <dt><span data-translate="springCarsApp.car.country">Country</span></dt>
-        <dd>
-            <span>{{vm.car.country}}</span>
-        </dd>
         <dt><span data-translate="springCarsApp.car.description">Description</span></dt>
         <dd>
             <span>{{vm.car.description}}</span>
@@ -31,6 +27,10 @@
         <dt><span data-translate="springCarsApp.car.maxPrice">Max Price</span></dt>
         <dd>
             <span>{{vm.car.maxPrice}}</span>
+        </dd>
+        <dt><span data-translate="springCarsApp.car.year">Year</span></dt>
+        <dd>
+            <span>{{vm.car.year | date:'medium'}}</span>
         </dd>
         <dt><span data-translate="springCarsApp.car.manufacturer">Manufacturer</span></dt>
         <dd>

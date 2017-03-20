@@ -15,7 +15,7 @@
             "fieldType": "String"
         }
     ],
-    "changelogDate": "20170314184816",
+    "changelogDate": "20170320191342",
     "entityTableName": "gas",
     "dto": "no",
     "pagination": "no",

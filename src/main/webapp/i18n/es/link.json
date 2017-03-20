@@ -17,6 +17,7 @@
                 "title": "Link"
             },
             "url": "Url",
+            "lang": "Lang",
             "type": "Type",
             "car": "Car"
         }

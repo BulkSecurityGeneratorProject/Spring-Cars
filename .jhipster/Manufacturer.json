@@ -14,6 +14,10 @@
             "fieldType": "String"
         },
         {
+            "fieldName": "country",
+            "fieldType": "String"
+        },
+        {
             "fieldName": "description",
             "fieldType": "String"
         },
@@ -22,7 +26,7 @@
             "fieldType": "ZonedDateTime"
         }
     ],
-    "changelogDate": "20170314184819",
+    "changelogDate": "20170320191345",
     "entityTableName": "manufacturer",
     "dto": "no",
     "pagination": "no",

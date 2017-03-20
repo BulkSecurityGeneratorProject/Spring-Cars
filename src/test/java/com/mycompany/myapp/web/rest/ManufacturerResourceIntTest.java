@@ -45,6 +45,9 @@ public class ManufacturerResourceIntTest {
     private static final String DEFAULT_NAME = "AAAAA";
     private static final String UPDATED_NAME = "BBBBB";
 
+    private static final String DEFAULT_COUNTRY = "AAAAA";
+    private static final String UPDATED_COUNTRY = "BBBBB";
+
     private static final String DEFAULT_DESCRIPTION = "AAAAA";
     private static final String UPDATED_DESCRIPTION = "BBBBB";
 
@@ -87,6 +90,7 @@ public class ManufacturerResourceIntTest {
     public static Manufacturer createEntity(EntityManager em) {
         Manufacturer manufacturer = new Manufacturer()
                 .name(DEFAULT_NAME)
+                .country(DEFAULT_COUNTRY)
                 .description(DEFAULT_DESCRIPTION)
                 .yearFund(DEFAULT_YEAR_FUND);
         return manufacturer;
@@ -114,6 +118,7 @@ public class ManufacturerResourceIntTest {
         assertThat(manufacturers).hasSize(databaseSizeBeforeCreate + 1);
         Manufacturer testManufacturer = manufacturers.get(manufacturers.size() - 1);
         assertThat(testManufacturer.getName()).isEqualTo(DEFAULT_NAME);
+        assertThat(testManufacturer.getCountry()).isEqualTo(DEFAULT_COUNTRY);
         assertThat(testManufacturer.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
         assertThat(testManufacturer.getYearFund()).isEqualTo(DEFAULT_YEAR_FUND);
     }
@@ -130,6 +135,7 @@ public class ManufacturerResourceIntTest {
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
                 .andExpect(jsonPath("$.[*].id").value(hasItem(manufacturer.getId().intValue())))
                 .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
+                .andExpect(jsonPath("$.[*].country").value(hasItem(DEFAULT_COUNTRY.toString())))
                 .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION.toString())))
                 .andExpect(jsonPath("$.[*].yearFund").value(hasItem(DEFAULT_YEAR_FUND_STR)));
     }
@@ -146,6 +152,7 @@ public class ManufacturerResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(manufacturer.getId().intValue()))
             .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()))
+            .andExpect(jsonPath("$.country").value(DEFAULT_COUNTRY.toString()))
             .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION.toString()))
             .andExpect(jsonPath("$.yearFund").value(DEFAULT_YEAR_FUND_STR));
     }
@@ -169,6 +176,7 @@ public class ManufacturerResourceIntTest {
         Manufacturer updatedManufacturer = manufacturerRepository.findOne(manufacturer.getId());
         updatedManufacturer
                 .name(UPDATED_NAME)
+                .country(UPDATED_COUNTRY)
                 .description(UPDATED_DESCRIPTION)
                 .yearFund(UPDATED_YEAR_FUND);
 
@@ -182,6 +190,7 @@ public class ManufacturerResourceIntTest {
         assertThat(manufacturers).hasSize(databaseSizeBeforeUpdate);
         Manufacturer testManufacturer = manufacturers.get(manufacturers.size() - 1);
         assertThat(testManufacturer.getName()).isEqualTo(UPDATED_NAME);
+        assertThat(testManufacturer.getCountry()).isEqualTo(UPDATED_COUNTRY);
         assertThat(testManufacturer.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
         assertThat(testManufacturer.getYearFund()).isEqualTo(UPDATED_YEAR_FUND);
     }

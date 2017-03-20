@@ -20,6 +20,12 @@
                      />
         </div>
         <div class="form-group">
+            <label class="control-label" data-translate="springCarsApp.link.lang" for="field_lang">Lang</label>
+            <input type="text" class="form-control" name="lang" id="field_lang"
+                    ng-model="vm.link.lang"
+                     />
+        </div>
+        <div class="form-group">
             <label class="control-label" data-translate="springCarsApp.link.type" for="field_type">Type</label>
             <select class="form-control" name="type" ng-model="vm.link.type" id="field_type">
                 <option value="SPECS" data-translate="springCarsApp.LinkType.SPECS">SPECS</option>
