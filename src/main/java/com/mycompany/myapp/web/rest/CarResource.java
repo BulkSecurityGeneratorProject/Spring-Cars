@@ -3,19 +3,30 @@ package com.mycompany.myapp.web.rest;
 import com.codahale.metrics.annotation.Timed;
 import com.mycompany.myapp.domain.Car;
 
+import com.mycompany.myapp.domain.Manufacturer;
+import com.mycompany.myapp.domain.enumeration.Segment;
+import com.mycompany.myapp.repository.CarByCriteriaRepository;
 import com.mycompany.myapp.repository.CarRepository;
 import com.mycompany.myapp.web.rest.util.HeaderUtil;
+import com.mycompany.myapp.web.rest.util.PaginationUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import javax.inject.Inject;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 /**
@@ -26,9 +37,11 @@ import java.util.Optional;
 public class CarResource {
 
     private final Logger log = LoggerFactory.getLogger(CarResource.class);
-        
+
     @Inject
     private CarRepository carRepository;
+    @Inject
+    private CarByCriteriaRepository carByCriteriaRepository;
 
     /**
      * POST  /cars : Create a new car.
@@ -117,4 +130,110 @@ public class CarResource {
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert("car", id.toString())).build();
     }
 
-}
+    @RequestMapping(value = "/car/byfilters",
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    @Transactional
+
+        public ResponseEntity<List<Car>> getCarsByFilters(
+        Pageable pageable,
+        @RequestParam(value = "sales", required = false) String sales,
+        @RequestParam(value = "minPrice", required = false) String minPrice,
+        @RequestParam(value = "maxPrice", required = false) String maxPrice,
+        @RequestParam(value = "model", required = false) String model,
+        @RequestParam(value = "segment", required = false) Segment segment,
+        @RequestParam(value = "manufacturer", required = false) String manufacturer
+        ) throws URISyntaxException {
+
+        Map<String, Object> params = new HashMap<>();
+
+        if (sales != null) {
+
+            try {
+                Integer salesInt = Integer.parseInt(sales);
+                params.put("sales", salesInt);
+            } catch (NumberFormatException e) {
+                return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("car",
+                    "number format exception on param",
+                    "A numeric param cannot have non numeric characters")).body(null);
+            }
+
+        }
+
+        if (minPrice != null) {
+
+            try {
+                Double minPriceDouble = Double.parseDouble(minPrice);
+                params.put("minPrice", minPriceDouble);
+            } catch (NumberFormatException e) {
+                return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("car",
+                    "number format exception on param",
+                    "A numeric param cannot have non numeric characters")).body(null);
+            }
+
+        }
+
+        if (maxPrice != null) {
+
+            try {
+                Double maxPriceDouble  = Double.parseDouble(maxPrice);
+                params.put("maxPrice", maxPriceDouble);
+            } catch (NumberFormatException e) {
+                return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("car",
+                    "number format exception on param",
+                    "A numeric param cannot have non numeric characters")).body(null);
+            }
+
+        }
+
+        if (model != null) { //TODO:Custom error If not string
+
+            try {
+                params.put("model", model);
+            } catch (NumberFormatException e) {
+                return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("car",
+                    "number format exception on param",
+                    "A numeric param cannot have non numeric characters")).body(null);
+            }
+
+        }
+
+        if (segment != null) { //TODO:Custom error If not string
+
+            try {
+                params.put("segment", segment);
+            } catch (NumberFormatException e) {
+                return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("car",
+                    "number format exception on param",
+                    "A numeric param cannot have non numeric characters")).body(null);
+            }
+
+        }
+
+        if (manufacturer != null) { //TODO:Custom error If not a manufacturer obj
+
+            try {
+                params.put("manufacturer", manufacturer);
+            } catch (NumberFormatException e) {
+                return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("car",
+                    "number format exception on param",
+                    "A numeric param cannot have non numeric characters")).body(null);
+            }
+
+        }
+
+
+        List<Car> result = carByCriteriaRepository.filteryCarByCriteria(params,pageable);
+
+            Page<Car> page = new PageImpl<Car>(result, pageable, carRepository.findAll().size());
+            HttpHeaders httpHeaders = new HttpHeaders();
+
+            HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/car/byfilters");
+            return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+
+
+        }
+    }
+
+

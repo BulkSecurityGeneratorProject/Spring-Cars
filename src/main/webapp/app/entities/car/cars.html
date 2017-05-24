@@ -1,9 +1,9 @@
 <div>
-    <h2 data-translate="springCarsApp.car.home.title">Cars</h2>
+    <h1 style="Color:white;font-size:50px;font-weight: 100;" class="text-center">Buscador</h1>
     <jhi-alert></jhi-alert>
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-xs-4 no-padding-left">
+        <div>
+            <div class="col-xs-2 no-padding-left" has-authority="ROLE_USER">
                 <button class="btn btn-primary" ui-sref="car.new" >
                     <span class="glyphicon glyphicon-plus"></span>
                     <span  data-translate="springCarsApp.car.home.createLabel">
@@ -11,10 +11,49 @@
                     </span>
                 </button>
             </div>
+            <div class="col-xs-12 panel panel-default" style="background-color:rgba(255, 255, 255,0.3); border:none">
+                <br>
+                <h4 class="text-center">Filters</h4>
+                <br/>
+                <div class="row">
+                    <div class="col-xs-4">
+                        <input class="input-sm form-control" ng-model="vm.filter.model" type="text" id="model" name="model" placeholder="model"/>
+                    </div>
+                    <div class="col-xs-4">
+                        <input class="input-sm form-control" ng-model="vm.filter.sales" type="number" id="sales" name="sales" placeholder="sales"/>
+                    </div>
+                    <div class="col-xs-4">
+                        <select class="input-sm form-control" id="manufacturer" name="manufacturer" ng-model="vm.filter.manufacturer" ng-options="x as x.name for x in vm.manufacturers track by x.id">
+                            <option disabled selected value="">Manufacturer</option>
+                        </select>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-xs-4">
+                        <input class="input-sm form-control" ng-model="vm.filter.minPrice" type="number" id="minPrice" name="minPrice" placeholder="minPrice"/>
+                    </div>
+                    <div class="col-xs-4">
+                        <input class="input-sm form-control" ng-model="vm.filter.maxPrice" type="number" id="maxPrice" name="maxPrice" placeholder="maxPrice"/>
+                    </div>
+                    <div class="col-xs-4">
+                        <select class="input-sm form-control" id="segment"  name="segment" ng-model="vm.filter.segment" ng-options="x as x for x in vm.segments track by x">
+                            <option disabled selected value="">Segment</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-3 pull-right">
+                    <button class="btn btn-default"  ng-click="vm.searchByFilter()">Search</button>
+                    <button class="btn btn-warning" style="background-color:#35b88f; border-color: #35b88f" ng-click="vm.reset()">Reset</button>
+                </div>
+                </div>
+                <br/>
+            </div>
         </div>
     </div>
     <br/>
-    <div class="table-responsive">
+    <div class="table-responsive" style="background-color:whitesmoke;font-size: 18px">
         <table class="jh-table table table-striped">
             <thead>
                 <tr>

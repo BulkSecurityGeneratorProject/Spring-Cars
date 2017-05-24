@@ -11,6 +11,7 @@
 
         return $resource(resourceUrl, {}, {
             'query': { method: 'GET', isArray: true},
+            'byFilter': {method:'GET', isArray: true, url:'api/car/byfilters'},
             'get': {
                 method: 'GET',
                 transformResponse: function (data) {
